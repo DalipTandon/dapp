@@ -37,9 +37,11 @@ function App() {
    <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <div className="h-screen  flex flex-col items-center justify-center space-y-6">
+          <div className="h-screen bg-[#B0CE88]  flex flex-col items-center justify-center space-y-6">
+            <div className='mb-10 flex flex-col space-y-5 items-end w-full  mr-24'>
             <WalletMultiButton />
             <WalletDisconnectButton />
+            </div>
             <Airdrop />
           </div>
         </WalletModalProvider>
