@@ -17,6 +17,8 @@ import {
 import { clusterApiUrl } from '@solana/web3.js';
 import '@solana/wallet-adapter-react-ui/styles.css';
 import { Airdrop } from './Airdrop';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import SendToken from './SendToken';
 
 function App() {
   const network = WalletAdapterNetwork.Devnet;  //this is used to define the network
@@ -34,19 +36,27 @@ function App() {
   );
 
   return (
+    
+    
    <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
+          <BrowserRouter>
           <div className="h-screen bg-[#B0CE88]  flex flex-col items-center justify-center space-y-6">
             <div className='mb-10 flex flex-col space-y-5 items-end w-full  mr-24'>
             <WalletMultiButton />
             <WalletDisconnectButton />
             </div>
-            <Airdrop />
+            <Routes>
+          <Route path={"/"} element={<Airdrop/>}/>
+          <Route path='/sendtoken' element={<SendToken/>} />
+            </Routes>
           </div>
+           </BrowserRouter>
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
+   
   )
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { useState } from 'react';
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { Link } from 'react-router';
 
 
 export function Airdrop() {
@@ -61,6 +62,7 @@ export function Airdrop() {
           <div className='w-full flex justify-center space-x-8'>
         <button onClick={handleAirdrop} className='border border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Request Airdrop </button>
         <button onClick={handleGetBalance} className='border border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Show Wallet Balance </button>
+        <Link to={"/sendtoken"} className='border text-center border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Send Token </Link>
           </div>
         {balance && <p className='font-bold text-red-500'>Your current Balance is {balance}</p>}
         <div className="mt-8 w-full flex justify-center">
