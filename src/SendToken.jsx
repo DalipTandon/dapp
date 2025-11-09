@@ -15,12 +15,12 @@ async function sendToken(){
 
     transaction.add(SystemProgram.transfer({
         fromPubkey:wallet.publicKey,
-        toPubkey:new PublicKey(receiverAdd),
+        toPubkey:new PublicKey(receiverAdd),    //creating a transaction object
         lamports:amount * LAMPORTS_PER_SOL
     }));
-
-    await wallet.sendTransaction(transaction,connection);
-    alert("Sent " + amount + " SOL to " + receiverAdd);
+ 
+    await wallet.sendTransaction(transaction,connection);  //sending the transaction
+    alert("Sent " + amount + " SOL to " + receiverAdd); 
     setAmount("");
     setReceiverAdd("");
 

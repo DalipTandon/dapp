@@ -63,6 +63,7 @@ export function Airdrop() {
         <button onClick={handleAirdrop} className='border border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Request Airdrop </button>
         <button onClick={handleGetBalance} className='border border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Show Wallet Balance </button>
         <Link to={"/sendtoken"} className='border text-center border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Send Token </Link>
+        <Link to={"/signmessage"} className='border text-center border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Sign Message </Link>
           </div>
         {balance && <p className='font-bold text-red-500'>Your current Balance is {balance}</p>}
         <div className="mt-8 w-full flex justify-center">

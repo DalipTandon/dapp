@@ -19,6 +19,7 @@ import '@solana/wallet-adapter-react-ui/styles.css';
 import { Airdrop } from './Airdrop';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import SendToken from './SendToken';
+import SignMessage from './SignMessage';
 
 function App() {
   const network = WalletAdapterNetwork.Devnet;  //this is used to define the network
@@ -50,6 +51,7 @@ function App() {
             <Routes>
           <Route path={"/"} element={<Airdrop/>}/>
           <Route path='/sendtoken' element={<SendToken/>} />
+          <Route path='/signmessage' element={<SignMessage/>} />
             </Routes>
           </div>
            </BrowserRouter>
