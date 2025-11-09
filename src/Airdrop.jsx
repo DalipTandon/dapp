@@ -8,6 +8,7 @@ export function Airdrop() {
     const wallet = useWallet();
     const { connection } = useConnection();
     const [amount, setAmount ]= useState("");
+    const [balance,setBalance]=useState("");
     async function handleAirdrop() {
         if (!wallet.connected || !wallet.publicKey) {
             alert("Please connect your wallet first.");
@@ -34,6 +35,20 @@ export function Airdrop() {
 
     }
 
+
+        async function handleGetBalance() {
+        if (!wallet.connected || !wallet.publicKey) {
+            alert("Please connect your wallet first.");
+            return;
+        }
+       const amount=await connection.getBalance(wallet.publicKey);
+        setBalance(amount / LAMPORTS_PER_SOL);   
+        
+        setTimeout(() => {
+            setBalance("");
+        }, 2000);
+    }
+
     return <div className="h-[70vh] w-[70vw] mt-12 flex flex-col space-y-4 items-center">
 
         <h4 className=' text-5xl font-bold text-black-400 text-[#2F5755]'>💦Soul Faucet💦</h4>
@@ -43,8 +58,11 @@ export function Airdrop() {
           step="0.01"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}  className='border bg-[#BBC863] font-bold border-gray-300 p-3 rounded-2xl w-4/5 text-center' placeholder="Enter Amount to Airdrop" />
+          <div className='w-full flex justify-center space-x-8'>
         <button onClick={handleAirdrop} className='border border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Request Airdrop </button>
-
+        <button onClick={handleGetBalance} className='border border-gray-300 w-1/4 p-2 rounded-2xl bg-blue-100 hover:scale-90' >Show Wallet Balance </button>
+          </div>
+        {balance && <p className='font-bold text-red-500'>Your current Balance is {balance}</p>}
         <div className="mt-8 w-full flex justify-center">
             <div className=" from-pink-500 via-red-500 to-yellow-400 rounded-2xl shadow-lg p-6 max-w-3xl text-center text-white space-y-4 transform transition hover:scale-[1.02]">
                 <h2 className="text-3xl font-extrabold tracking-tight drop-shadow-md">
